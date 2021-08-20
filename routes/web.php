@@ -13,10 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\SitesettingController::class, 'index'])->name('home');
+Route::post('/contact', [App\Http\Controllers\SitesettingController::class, 'ContactStore'])->name('contact');
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
+Route::get('paypal/express-checkout', [App\Http\Controllers\PaypalController::class, 'expressCheckout'])->name('paypal.express-checkout');
+Route::post('paypal/express-checkout', [App\Http\Controllers\PaypalController::class, 'expressCheckout'])->name('paypal.express-checkout');
+
+Route::get('paypal/express-checkout-success', [App\Http\Controllers\PaypalController::class, 'expressCheckoutSuccess'])->name('paypal.express-success');
+
+Route::post('paypal/notify', [App\Http\Controllers\PaypalController::class, 'notify']);
+
+
+
+
+
+
