@@ -27,7 +27,7 @@ This product has these features.
 <br>rishikantsri.tech
 
 ## Live Site
-https://ngo.rishikantsri.tech/
+https://ngo.rishikantsri.online/
 
 
 ## FAQ
